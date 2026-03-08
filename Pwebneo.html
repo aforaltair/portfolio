@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Montserrat:wght@700&display=swap" rel="stylesheet">
+<style>
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+    background: #f5f7fa;
+    color: #333;
+    scroll-behavior: smooth;
+}
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(255,255,255,0.95);
+    display: flex;
+    justify-content: center;
+    padding: 12px 0;
+    z-index: 100;
+    font-weight: bold;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    backdrop-filter: blur(5px);
+}
+nav a {
+    margin: 0 20px;
+    color: #555;
+    transition: 0.3s;
+    cursor:pointer;
+}
+nav a:hover { color: #4a90e2; }
+
+section {
+    min-height: 100vh; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 80px 20px; 
+    box-sizing: border-box;
+}
+.banner {
+    background: linear-gradient(135deg, #4a90e2, #50e3c2);
+    color: #fff;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.banner h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 3em;
+    margin-bottom: 15px;
+}
+.banner p {
+    font-size: 1.2em;
+    margin-bottom: 25px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.banner button {
+    padding: 12px 28px;
+    font-size: 1em;
+    font-weight: bold;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    background: white;
+    color: #4a90e2;
+    transition: 0.3s;
+}
+.banner button:hover { background: #eee; }
+
+.card {
+    background: white;
+    padding: 50px 40px;
+    border-radius: 15px;
+    max-width: 700px;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.12);
+}
+h2 {
+    font-family: 'Montserrat', sans-serif;
+    color: #4a90e2;
+    margin-bottom: 20px;
+}
+ul { text-align: left; padding-left: 20px; }
+a.link { color: #4a90e2; }
+
+#goofyPic {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    max-width: 90%;
+    max-height: 90%;
+    transform: translate(-50%, -50%);
+    object-fit: contain; 
+    z-index: 9999;
+    cursor: pointer;
+    display: none;
+}
+
+#fakeAd {
+    display: none;
+    position: fixed;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    background: rgba(0,0,0,0.5);
+    z-index: 9998;
+}
+#fakeAdInner {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    border: 3px solid #4a90e2;
+    padding: 30px;
+    text-align: center;
+    width: 400px;
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+}
+#fakeAdInner pre {
+    font-family: 'Courier New', monospace;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: pre;
+    text-align: left;
+}
+#fakeAdInner button {
+    padding:10px 20px;
+    border:none;
+    background:#4a90e2;
+    color:white;
+    border-radius:10px;
+    cursor:pointer;
+    margin-top:10px;
+}
+
+footer {
+    text-align: center;
+    padding: 25px;
+    background: #333;
+    color: white;
+    font-size: 0.9em;
+}
+
+@media (max-width: 600px) {
+    .banner h1 { font-size: 2.2em; }
+    .banner p { font-size: 1em; }
+    .banner button { padding: 10px 22px; }
+    .card { padding: 40px 20px; }
+    #fakeAdInner { width: 90%; }
+}
+</style>
+<script>
+function showGoofy() {
+    document.getElementById("goofyPic").style.display = "block";
+}
+function showFakeAd() {
+    document.getElementById("fakeAd").style.display = "block";
+}
+setInterval(showFakeAd, 14000);
+window.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("nav a").forEach(link => {
+        link.addEventListener("click", showFakeAd);
+    });
+});
+</script>
+</head>
+<body>
+
+<nav>
+    <a href="#banner">Home</a>
+    <a href="#about">About</a>
+    <a href="#achievements">Achievements</a>
+    <a href="#contact">Contact</a>
+</nav>
+
+<section id="banner" class="banner">
+    <h1>Hi, I'm Rowel Neo Andrada</h1>
+    <button onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
+        About Me
+    </button>
+    <p style="margin-top:20px;">
+        <span style="font-size:0.9em; cursor:pointer; text-decoration:underline;" onclick="showGoofy()">don't click me</span>
+    </p>
+    <img id="goofyPic"
+         src="https://static.wikia.nocookie.net/e8451b44-5672-4943-9172-729200ac361c/scale-to-width/755?format=original"
+         onclick="this.style.display='none'" style="display:none;">
+</section>
+
+<section id="about">
+    <div class="card">
+        <h2>About Me</h2>
+        <p><strong>Name:</strong> Rowel Neo Andrada</p>
+        <p><strong>Date of Birth:</strong> November 2, 2006</p>
+        <p><strong>Age:</strong> 19</p>
+        <p><strong>Sex:</strong> Male</p>
+        <p><strong>Nationality:</strong> Filipino</p>
+        <p><strong>Religion:</strong> Catholic</p>
+        <h3>Hobbies</h3>
+        <ul>
+            <li>Basketball</li>
+            <li>Online Games</li>
+            <li>Cooking</li>
+            <li>Sleeping</li>
+            <li>Listening to Music</li>
+            <li>Watching Movies / Series</li>
+            <li>Make fun of others 🤪</li>
+        </ul>
+    </div>
+</section>
+
+<section id="achievements">
+    <div class="card">
+        <h2>Achievements</h2>
+        <ul>
+            <li>🏆 Top Student in Elementary</li>
+            <li>🎓 Consistent With Honors in Senior High School</li>
+            <li>👑 Prom King – ICT Strand</li>
+            <li>tapos wala na😢</li>
+        </ul>
+    </div>
+</section>
+
+<section id="contact">
+    <div class="card">
+        <h2>Contact</h2>
+        <p>Email: <a class="link" href="mailto:rowelneoandrada23@gmail.com">rowelneoandrada23@gmail.com</a></p>
+        <p>Phone: <a class="link" href="tel:09936228595">0993 622 8595</a></p>
+        <p>Facebook: <a class="link" href="https://www.facebook.com/share/1BxdcjwUdZ/" target="_blank">Neo Andrada</a></p>
+        <p>Instagram: <a class="link" href="https://www.instagram.com/laberboii?igsh=Z2liajA0ZnpnM2Ex" target="_blank">@laberboiii</a></p>
+        <p>TikTok: <a class="link" href="https://tiktok.com/@cashless_neo" target="_blank">@cashless_neo</a></p>
+        <p>Discord: <span>.liverloverboy</span></p>
+    </div>
+</section>
+
+<div id="fakeAd">
+    <div id="fakeAdInner">
+        <h2 style="color:#4a90e2;">Ops Ads muna</h2>
+        <pre>
+──────▄▌▐▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▌
+───▄▄██▌█ BEEP BEEP
+▄▄▄▌▐██▌█ ADS DELIVERY
+███████▌█▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▌
+▀(⊙)▀▀▀▀▀▀▀(⊙)(⊙)▀▀▀▀▀▀▀▀▀▀(⊙)
+        </pre>
+        <button onclick="document.getElementById('fakeAd').style.display='none'">Close</button>
+    </div>
+</div>
+
+<footer>
+    &copy; 2026 My Portfolio
+</footer>
+
+</body>
+</html>
